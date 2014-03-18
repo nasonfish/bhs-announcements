@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}View Announcements{% endblock %}
+        {% block content %}
+        <span style="font-size: 12pt;"><a href="{{ url_for('index') }}">&larr; Back</a></span>
+        {% block content_head %}
+        <h2>View current announcements</h2>
+        <em>See <a href="{{ url_for('raw') }}">the raw version</a> for embedding</em>
+        {% endblock content_head %}
+        <table style="width: 100%;">
+            <tr>
+                <th>ID</th>
+                <th>Submitter</th>
+                <th>Topic</th>
+                <th colspan="5">Text</th>
+                <th>Created on</th>
+                <th>Expires on</th>
+            </tr>
+            {% for post in posts: %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.username }}</td>
+                <td>{{ post.title }}</td>
+                <td colspan="5">{{ post.get_text()|safe }}</td>
+                <td>{{ post.get_created() }}</td>
+                <td>{{ post.get_expiry() }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+        {% block title %}Welcome!{% endblock %}
+
+        {% block content %}
+        <h2>Hey there!</h2>
+        <p>Welcome to the Basalt High School announcement manager!</p>
+        <p>This simple program allows students to add announcements to be read each morning, and those announcements to be displayed on the school website.</p>
+        <ul>
+            <li><a href="{{ url_for('submit') }}">Submit an announcement</a> (requires application password)</li>
+            <li><a href="{{ url_for('view') }}">View announcements</a></li>
+            <li><a href="{{ url_for('archive') }}">View announcement archive</a></li>
+        </ul>
+        <p>Embed active announcements raw into a website:</p>
+        <textarea style="width: 300px; height: 200px;" contenteditable="false">{{ '<iframe src="http://nasonfish.com:12358/view/raw" width=600 height=650></iframe>' }}</textarea>
+        {% endblock content %}

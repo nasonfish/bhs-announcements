@@ -1,0 +1,13 @@
+<html>
+<body>
+<hr/>
+{% for item in posts: %}
+<section>
+    <h3>{{ item.title }}</h3>
+    <span><em>by {{ item.username }} - from {{ item.get_display() }} to {{ item.get_expiry() }}.</em></span>
+    <p>{{ item.get_text()|safe }}</p>
+</section>
+<hr/>
+{% endfor %}
+</body>
+</html>

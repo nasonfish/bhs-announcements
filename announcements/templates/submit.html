@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Submit Announcement{% endblock %}
+        {% block content %}
+        <span style="font-size: 12pt;"><a href="{{ url_for('index') }}">&larr; Back</a></span>
+        <h2>Submit a new announcement</h2>
+        <!-- username, title, text, display, expire... + archive only? -->
+        <form method="post" action="{{ url_for('submit_post') }}">
+            <label for="submit-username">What's your name?</label>
+            <input id="submit-username" name="username" type="text"/>
+            <label for="submit-title">What subject does this announcement regard? (for ordering purposes)</label>
+            <input id="submit-title" name="title" type="text"/>
+            <label for="submit-text">Enter your announcement!</label>
+            <div style="display: inline-block;">
+                <textarea id="submit-text" name="text" style="width: 500px; height: 300px;"></textarea>
+            </div>
+            <div style="display: inline-block; vertical-align: top; margin-left: 30px;
+                    border: 1px solid #444; padding-left: 4px; margin-right: 10px;
+                    height: 300px;">
+                <h3>Style techniques</h3>
+                <ul>
+                    <li>Single <code>*asterisks*</code> or <code>_underscores_</code> cause <em>italicized words</em></li>
+                    <li>Double <code>**asterisks**</code> or <code>__underscores__</code> cause <b>bold text</b></li>
+                    <li><code># hash-prefixed text</code> causes headers (more hashes cause smaller text)</li>
+                    <li><code> - "space, hyphen, space, text"</code>signifies a bulleted list.</li>
+                    <li>Also, to use a line break, use double-spacing - you need to hit enter twice, otherwise it is ignored.</li>
+                </ul>
+            </div>
+            <label for="submit-archive">Is this announcement only for archiving purposes?</label>
+            <input id="submit-archive" type="checkbox" name="archive" class="toggle-check toggle-invert" data-toggle="#dates"/>
+            <div id="dates">
+                <span>This announcement will appear in <input type="number" name="display-day" placeholder="number"/> day(s),
+                and vanish <input type="number" name="expiry" placeholder="number"/> day(s) after appearing.</span>
+            </div>
+            <label for="submit-password">For security purposes, enter your password for this service.</label>
+            <input id="submit-password" type="password" name="password" placeholder="password"/>
+            <button type="submit">Submit</button>
+        </form>
+        {% endblock %}

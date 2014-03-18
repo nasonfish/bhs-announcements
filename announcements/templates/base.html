@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        *{
+            color: #77bbff;
+        }
+        button, input, textarea{
+            background-color: #343131;
+            color: #bbeeff;
+            border-color: #030303;
+        }
+        label{
+            display: block;
+        }
+        table th, table td{
+            text-align: center;
+            border-color: #777;
+            border: 1px solid;
+        }
+        form input{
+            margin-bottom: 10px;
+            width: 300px;
+        }
+        form input[type="number"]{
+            width: 100px;
+        }
+        code{
+            border-top: 1px solid #666;
+            border-bottom: 1px solid #666;
+            padding: 1.5px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            margin-right: 2px;
+        }
+        li{
+            margin-top: 5px;
+        }
+        body{
+            background-image: url('/static/use_your_illusion.png');
+            padding-bottom: 40px;
+        }
+    </style>
+    <title>{% block title %}{% endblock %} - Basalt High School Announcements</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+<script src="/static/simpledom.js"></script>
+<script>
+simpleDOM('.toggle-check').bind('click', function(){
+var self = simpleDOM(this);
+if(!(self.hasClass('toggle-invert') ^ this.checked)){
+    simpleDOM(self.attr('data-toggle')).show();
+} else {
+    simpleDOM(self.attr('data-toggle')).hide();
+}
+});
+</script>
+{% block foot %}{% endblock %}
+</html>
